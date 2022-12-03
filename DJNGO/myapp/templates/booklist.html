@@ -7,12 +7,25 @@
     <!-- Display Objects -->
     <div  style='background-color:{% cycle 'lightblue' 'pink' 'yellow' 'coral' 'grey' %}'>
 
-    <li>{{ object.title }}</li>
+    <li>Título del libro: {{ object.title }}</li>
+    <li>Lenguaje : {{ object.language_code | upper }}</li>
+    <li>Editor : {{ object.publisher }}</li>
+    <li>Cantidad de reseñas : {{ object.text_reviews_count }}</li>
 
     {% if object.authors|length <= 30 %}
-    <li>{{ object.authors }}</li>
-    <li>Tamaño del autor: {{object.authors|length}}</li>
+    <li>Autor : {{ object.authors }}</li>
+    <li>Tamaño texto 'autor': {{object.authors|length}}</li>
     {% endif %}
+
+    {% if object.publisher|length < 20 %}
+    <li>Tamaño del texto 'editor' : {{object.publisher|length}}</li>
+    {% endif %}
+
+    {% if object.text_reviews_count > 10 %}
+    <li>Cantidad de reseñas: {{object.text_reviews_count }}</li>
+    {% endif %}
+
+
     </div>
 
     <hr/>
