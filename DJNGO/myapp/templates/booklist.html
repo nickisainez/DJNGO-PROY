@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <div  style='background-color:{% cycle 'lightblue' 'pink' 'yellow' 'coral' 'grey' %}'>
+
+    <li>{{ object.title }}</li>
+
+    {% if object.authors|length <= 30 %}
+    <li>{{ object.authors }}</li>
+    <li>Tamaño del autor: {{object.authors|length}}</li>
+    {% endif %}
+    </div>
+
+    <hr/>
+    <!-- If object_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
